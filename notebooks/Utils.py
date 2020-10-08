@@ -1,7 +1,8 @@
 import pandas as pd
 import numpy as np
-from matplotlib import pyplot as plt
-import seaborn as sns
+import re
+#from matplotlib import pyplot as plt
+#import seaborn as sns
 
 def get_decimal(f, aprox=2):
     """Gets the decimal part of a float
@@ -46,3 +47,9 @@ def get_year_from_description(df):
                 df.at[idx, 'year'] = year
         except:
             pass
+
+def format_mile_info(n_str):
+    if(n_str[-1] == 'k' or n_str[-1] == 'K'):
+        n_str = n_str[:-1] + '000'
+    n_str = re.sub('[,.]', '', n_str)
+    return n_str

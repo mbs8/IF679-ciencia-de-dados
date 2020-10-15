@@ -1,3 +1,6 @@
+CLEAN_VEHICLES_DATASET = "../datasets/clean_vehicles.csv"
+CLEAN_VEHICLES_2_DATASET = "../datasets/clean_vehicles_2.csv"
+
 STATES_DICT = {'Alabama':'al',
                 'Alaska':'ak',
                 'Arizona':'az',

@@ -34,6 +34,22 @@ def set_df_vehicles_data_types(df):
     for key in data_types.keys():
         for elem in data_types[key]:
             df[elem] = df[elem].astype(key)
+
+def load_vehicles_dataset_and_set_types(path):
+    """Load the vehicles dataset in the dataframe and sets the data types.
+
+    The dataset to be loaded should not contain null values.
+    
+    Args:
+        path(str): path where the dataset is.
+    
+    Returns:
+        pandas.DataFrame: the dataframe containing the vehicles dataset.
+    """
+    
+    df = pd.read_csv(path)
+    set_df_vehicles_data_types(df)
+    return df
             
 def get_brand_from_description(df):
     """Try to set the manufacturer of the vehicle based on description
@@ -56,8 +72,6 @@ def get_brand_from_description(df):
                 finalList.append(brand)
         if(len(finalList) == 1):
              df.at[idx, 'manufacturer'] = finalList[0]
-
-
             
 def get_year_from_description(df):
     """Try to set the year of the vehicle from the description of the offer. The operation is inplace.
@@ -118,12 +132,12 @@ def format_mile_info(n_str):
     return n_str
 
 def get_states_latitude_longitude(country="USA", states=STATES_DICT.keys()):
-    """Given a list of states of a specific country, returns a dictionary containing the coordinates of each state (latitude and longitude.)
+    """Given a list of states of a specific country, returns a dictionary containing the coordinates of each state (latitude and longitude).
     
     Args:
-        country (str)(optional): country where the states belongs
+        country (str)(optional): country where the states belongs.
         
-        states (list(str))(optional): states which to get the coordinates information
+        states (list(str))(optional): states which to get the coordinates information.
         
     Return:
         dict: where the keys are the initials of the state and the value is a list of 2 elements:
@@ -142,7 +156,7 @@ def put_coordinates_in_dataframe(df):
     """Given the vehicle dataframe, replace the null coordinates with the information returned from get_states_latitude_longitude function.
     
     Args:
-        df (pandas.DataFrame): DataFrame to replace the null coordinates
+        df (pandas.DataFrame): DataFrame to replace the null coordinates.
     """
     coordinates = get_states_latitude_longitude()
     null_coordinates_df = df[df['lat'].isnull() | df['long'].isnull()]
@@ -150,3 +164,18 @@ def put_coordinates_in_dataframe(df):
     for idx, line in null_coordinates_df.iterrows():
         df.at[idx, 'lat'] = coordinates[line['state']][0]
         df.at[idx, 'long'] = coordinates[line['state']][1]
+        
+def evaluate_df_z_score_for_column(df, column):
+    """Evaluate a DataFrame that all the lines in the 'column' have a z-score less than 3.5.
+    
+    Args:
+        df (pandas.DataFrame): DataFrame to evaluate.
+        
+        column (str): column name where the z-score will be executed.
+        
+    Returns:
+        pandas.DataFrame: A dataframe where every line has a z-score less than 3.5 in determined column.
+    """
+    mad = df[df[column] > 0][column].mad()
+    z_score_df = df[abs(df[column] - df[column].median())/mad < 3.5]
+    return z_score_df

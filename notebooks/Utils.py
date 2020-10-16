@@ -191,3 +191,17 @@ def evaluate_df_z_score_for_column(df, column):
     mad = df[df[column] > 0][column].mad()
     z_score_df = df[abs(df[column] - df[column].median())/mad < 3.5]
     return z_score_df
+
+def get_samples_in_usa(df):
+    """Return a dataframe coitaining only samples that are in the USA territory.
+        
+    Args:
+        df (pandas.DataFrame): dataframe where the operation will be done.
+    
+    Returns:
+        pandas.DataFrame: slice of the dataframe containing only samples in the USA territory.
+    """
+    return df[(df['lat'] >= min(BOTTOM_LEFT_PT[0], BOTTOM_RIGHT_PT[0])) 
+              & (df['lat'] <= max(TOP_LEFT_PT[0], TOP_RIGHT_PT[0])) 
+              & (df['long'] >= min(TOP_LEFT_PT[1], BOTTOM_LEFT_PT[1]))
+              & (df['long'] <= max(TOP_RIGHT_PT[1], BOTTOM_RIGHT_PT[1]))]

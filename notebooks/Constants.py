@@ -6,8 +6,7 @@ CLEAN_VEHICLES_2_DATASET = "../datasets/clean_vehicles_2.csv"
 TOP_LEFT_PT = (52.920556, -172.437778)
 TOP_RIGHT_PT = (71.388889, -156.479167)
 BOTTOM_RIGHT_PT = (44.816667, -66.916667)
-BOTTOM_LEFT_PT = (18.744167, -155.681111
-)
+BOTTOM_LEFT_PT = (18.744167, -155.681111)
 
 # Estados dos EUA e suas respectivas siglas
 STATES_DICT = {'Alabama':'al',

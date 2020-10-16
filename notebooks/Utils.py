@@ -6,6 +6,18 @@ from geopy.geocoders import Nominatim
 #from matplotlib import pyplot as plt
 #import seaborn as sns
 
+def floatStr(decimal, decimalPlaces=2):
+    """Format the decimal number into a string to be printed
+    
+    Args:
+        decimal (float): Real number to be formatted
+        decimalPlaces (int)(optional): Amount of decimal places
+        
+    Returns:
+        String: The number formatted as string
+    """
+    return str(round(decimal, decimalPlaces))
+
 def get_decimal(f, aprox=2):
     """Gets the decimal part of a float
     

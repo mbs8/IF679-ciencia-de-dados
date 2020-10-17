@@ -1,7 +1,7 @@
 # IF679-ciencia-de-dados
 Projeto IF679 - Ciência de Dados (2020.3)  
 
-## Descrição do notebooks
+## Descrição dos Notebooks
 ### 1-initial-analysis.ipynb
 Esse notebook contém uma visão geral e detalhes do dataset, define o que é cada coluna, alguns plots das colunas da colunas e estatisticas. Esse notebook é responsável por remover algumas colunas que foram identificadas como sem informação relevante para o projeto.  
 

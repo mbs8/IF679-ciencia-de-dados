@@ -1,6 +1,7 @@
 # IF679-ciencia-de-dados
 Projeto IF679 - Ciência de Dados (2020.3)  
 
+# Parte 1
 ## Descrição dos Notebooks
 ### 1-initial-analysis.ipynb
 Esse notebook contém uma visão geral e detalhes do dataset, define o que é cada coluna, alguns plots das colunas da colunas e estatisticas. Esse notebook é responsável por remover algumas colunas que foram identificadas como sem informação relevante para o projeto.  
@@ -16,3 +17,10 @@ Esse notebook é responsável por realizar alguns testes de hipóteses no datase
 
 ### 5-bonus.ipynb
 Neste notebook estão alguns bônus desevolvidos extras ao requisitos do projeto.
+
+## Scripts auxialiares
+### Utils.py
+Nesse script foram desenvolvidos todos os métodos auxiliares usados durante o desenvolvimento da parte 1 do projeto.  
+
+### Constants.py
+Aqui estão definidas as constantes usadas na parte 1 do projeto.

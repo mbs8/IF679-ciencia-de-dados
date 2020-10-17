@@ -16,7 +16,7 @@ Esse notebook contém as estatísticas descritivas com visualizações dos dados
 Esse notebook é responsável por realizar alguns testes de hipóteses no dataset.  
 
 ### 5-bonus.ipynb
-Neste notebook estão alguns bônus desevolvidos extras ao requisitos do projeto.
+Neste notebook estão alguns bônus desevolvidos extras ao requisitos do projeto. Um vídeo de demo e imagens dos mapas iterativos está dentro da pasta interactive_maps.
 
 ## Scripts auxialiares
 ### Utils.py

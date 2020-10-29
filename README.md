@@ -3,7 +3,7 @@ Projeto IF679 - Ciência de Dados (2020.3)
 
 # Parte 1
 ## Dataset
-Para execução dos scripts é necessário fazer o donwload do dataset (https://www.kaggle.com/austinreese/craigslist-carstrucks-data) e colocá-lo no diretório "/Parte 1/datasets/vehicles.csv"
+Para execução dos scripts é necessário descompactar os arquivos '.zip' que estão no diretório "/Parte 1/datasets/vehicles.csv".
 
 ## Descrição dos Notebooks
 ### 1-initial-analysis.ipynb

@@ -124,7 +124,7 @@ def run_regressor_and_track(train_df, train_dataset_name, test_df, test_dataset_
         mlflow.log_metrics(train_metrics)
         mlflow.log_metrics(test_metrics)
         mlflow.log_params(params)
-        mlflow.sklearn.log_model(model, model_name)
+        #mlflow.sklearn.log_model(model, model_name)
         
         print_regressor_metrics(train_metrics, True)
         print_regressor_metrics(test_metrics, False)

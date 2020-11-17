@@ -1,0 +1,4 @@
+artifact_location: file:///Users/matheus/Git/IF679-ciencia-de-dados/Parte%202/notebooks/mlruns/3
+experiment_id: '3'
+lifecycle_stage: active
+name: KNeighborsClassifier

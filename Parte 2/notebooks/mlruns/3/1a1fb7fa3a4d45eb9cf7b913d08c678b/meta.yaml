@@ -1,0 +1,15 @@
+artifact_uri: file:///Users/matheus/Git/IF679-ciencia-de-dados/Parte%202/notebooks/mlruns/3/1a1fb7fa3a4d45eb9cf7b913d08c678b/artifacts
+end_time: 1605625043400
+entry_point_name: ''
+experiment_id: '3'
+lifecycle_stage: active
+name: ''
+run_id: 1a1fb7fa3a4d45eb9cf7b913d08c678b
+run_uuid: 1a1fb7fa3a4d45eb9cf7b913d08c678b
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1605625031220
+status: 3
+tags: []
+user_id: matheus

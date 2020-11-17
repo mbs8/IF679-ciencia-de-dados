@@ -2,7 +2,7 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib as mpl
-from sklearn.metrics import r2_score, mean_squared_error, mean_absolute_error
+from sklearn.metrics import r2_score, mean_squared_error, mean_absolute_error, accuracy_score
 import mlflow
 import mlflow.sklearn
 import warnings
@@ -128,3 +128,55 @@ def run_regressor_and_track(train_df, train_dataset_name, test_df, test_dataset_
         
         print_regressor_metrics(train_metrics, True)
         print_regressor_metrics(test_metrics, False)
+
+def eval_classifier_metrics(real_values, predict, train=True):
+    accuracy = accuracy_score(real_values, predict)
+    
+    if(train):
+        classifier_metrics = {'train_accuracy': accuracy}
+    else:
+        classifier_metrics = {'test_accuracy': accuracy}
+    
+    return classifier_metrics
+
+def print_classifier_metrics(classifier_metrics, train=True):
+    if(train):
+        print("train_Accuracy: {:.4f}\n".format(classifier_metrics['train_accuracy']))
+    else:
+        print("test_Accuracy: {:.4f}\n".format(classifier_metrics['test_accuracy']))
+        
+def run_classifier_and_track(train_df, train_dataset_name, test_df, test_dataset_name, model, model_name, target, run_name, params):
+    exp_id = -1
+    experiment = mlflow.get_experiment_by_name(model_name)
+
+    if(experiment == None):
+        exp_id = mlflow.create_experiment(model_name)
+        experiment = mlflow.get_experiment_by_name(model_name)
+    else:
+        exp_id = experiment.experiment_id
+
+
+    tags = {'train_dataset': train_dataset_name,
+           'test_dataset': test_dataset_name}
+
+    with mlflow.start_run(experiment_id=exp_id, run_name=run_name):
+        mlflow.set_tags(tags)
+        
+        x_df = train_df.drop(columns=[target])
+        model.fit(x_df, train_df[target])
+
+        # Prevendo usando o dataset de treino
+        train_predict = model.predict(train_df.drop(columns=[target]))
+        train_metrics = eval_classifier_metrics(train_df[target], train_predict, train=True)
+        
+        # Prevendo usando o dataset de teste
+        test_predict = model.predict(test_df.drop(columns=[target]))
+        test_metrics = eval_classifier_metrics(test_df[target], test_predict, train=False)
+        
+        mlflow.log_metrics(train_metrics)
+        mlflow.log_metrics(test_metrics)
+        mlflow.log_params(params)
+        #mlflow.sklearn.log_model(model, model_name)
+        
+        print_classifier_metrics(train_metrics, True)
+        print_classifier_metrics(test_metrics, False)

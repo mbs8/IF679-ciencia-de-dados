@@ -1,0 +1,4 @@
+artifact_location: file:///Users/matheus/Git/IF679-ciencia-de-dados/Parte%202/notebooks/mlruns/4
+experiment_id: '4'
+lifecycle_stage: active
+name: RandomForestClassifier

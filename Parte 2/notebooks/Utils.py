@@ -180,3 +180,12 @@ def run_classifier_and_track(train_df, train_dataset_name, test_df, test_dataset
         
         print_classifier_metrics(train_metrics, True)
         print_classifier_metrics(test_metrics, False)
+    
+def eval_bias_and_variance(train_score, test_score, target_error):
+    train_error = 100 - train_score
+    test_error = 100 - test_score
+
+    bias = 5 - train_error
+    variance = test_error - train_error
+    
+    return bias, variance

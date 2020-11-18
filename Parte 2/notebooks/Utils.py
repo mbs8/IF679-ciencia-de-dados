@@ -185,7 +185,7 @@ def eval_bias_and_variance(train_score, test_score, target_error):
     train_error = 100 - train_score
     test_error = 100 - test_score
 
-    bias = 5 - train_error
+    bias = train_error - 5 
     variance = test_error - train_error
     
     return bias, variance
